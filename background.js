@@ -1,3 +1,5 @@
+// EXAMPLE FROM YOUTUBE
+/*
 let activeTabId = 0;
 
 chrome.tabs.onActivated.addListener(tab => {
@@ -21,3 +23,4 @@ chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
     chrome.storage.local.get('password', value => console.log(value));
   }
 });
+*/

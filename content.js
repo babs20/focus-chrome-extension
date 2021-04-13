@@ -1,5 +1,6 @@
+// EXAMPLE FROM YOUTUBE
+/*
 // document.querySelector('.k1zIA').classList.add('spinspinspin');
-
 const first = document.createElement('button');
 first.innerText = 'SET DATA';
 first.id = 'first';
@@ -24,3 +25,4 @@ second.addEventListener('click', () => {
 chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
   console.log(req.message);
 });
+*/
