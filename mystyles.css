@@ -12,3 +12,21 @@
     transform: rotate(1440deg);
   }
 }
+
+#first {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  padding: 1rem;
+  background-color: #dbeafe;
+  border-radius: 1rem;
+}
+
+#second {
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  padding: 1rem;
+  background-color: #dbeafe;
+  border-radius: 1rem;
+}
