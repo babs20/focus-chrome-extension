@@ -1,26 +1,22 @@
-// EXAMPLE FROM YOUTUBE
-/*
-let activeTabId = 0;
+const filter = { urls: ['<all_urls>'] };
+const isBannedSite = url => {
+  return (
+    /(http|https):\/\/twitter.com\/.*/g.test(url) ||
+    /(http|https):\/\/www.twitch.tv\/.*/g.test(url)
+  );
+};
 
-chrome.tabs.onActivated.addListener(tab => {
-  chrome.tabs.get(tab.tabId, currentTabInfo => {
-    activeTabId = tab.tabId;
-    if (/^https:\/\/www\.google/.test(currentTabInfo.url)) {
-      chrome.tabs.insertCSS(null, { file: './mystyles.css' });
-      chrome.tabs.executeScript(null, { file: './foreground.js' }, () => {
-        console.log('i injected');
-      });
-    }
-  });
-});
+const checkTime = () => {
+  const currentTime = new Date().getHours();
+  return currentTime < 16 && currentTime > 9;
+};
 
-chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
-  if (req.message === 'check the storage') {
-    chrome.tabs.sendMessage(activeTabId, {
-      message: 'i got the message - background',
-    });
-
-    chrome.storage.local.get('password', value => console.log(value));
+const showDetails = details => {
+  if (checkTime() && isBannedSite(details.url)) {
+    return (blockingResponse = { cancel: true });
   }
-});
-*/
+};
+
+chrome.webRequest.onBeforeRequest.addListener(showDetails, filter, [
+  'blocking',
+]);
