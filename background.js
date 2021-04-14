@@ -11,12 +11,12 @@ const checkTime = () => {
   return currentTime < 16 && currentTime > 9;
 };
 
-const showDetails = details => {
+const isCancelledRequest = details => {
   if (checkTime() && isBannedSite(details.url)) {
     return (blockingResponse = { cancel: true });
   }
 };
 
-chrome.webRequest.onBeforeRequest.addListener(showDetails, filter, [
+chrome.webRequest.onBeforeRequest.addListener(isCancelledRequest, filter, [
   'blocking',
 ]);
